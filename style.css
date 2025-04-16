@@ -1,0 +1,91 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gameCanvas {
+    border: 2px solid #fff;
+    background-color: #333;
+    margin-bottom: 20px;
+    max-width: 90vw; /* Pour éviter de dépasser la largeur de l'écran mobile */
+    max-height: 80vh; /* Pour éviter de dépasser la hauteur de l'écran mobile */
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+.controls button {
+    padding: 15px 25px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #555;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.controls button:hover {
+    background-color: #777;
+}
+
+/* Styles spécifiques pour les petits écrans (téléphones) */
+@media (max-width: 600px) {
+    .controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .controls button {
+        flex-basis: calc(33% - 10px); /* Trois boutons par ligne environ */
+        margin-bottom: 5px;
+    }
+
+    #rotateButton {
+        order: -1; /* Placer le bouton de rotation en premier sur les petits écrans */
+        flex-basis: 100%; /* Le bouton de rotation prend toute la largeur */
+    }
+}
+
+/* Styles pour l'orientation paysage sur les petits écrans */
+@media (max-width: 800px) and (orientation: landscape) {
+    .container {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #gameCanvas {
+        margin-bottom: 0;
+        margin-right: 20px;
+        max-height: 70vh;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .controls button {
+        flex-basis: auto;
+        margin-bottom: 10px;
+        padding: 10px 20px;
+    }
+
+    #rotateButton {
+        order: 0; /* Réinitialiser l'ordre en paysage */
+        flex-basis: auto;
+    }
+}
